@@ -1,1 +1,3 @@
 backup.log
+/mysql-data/*
+!/mysql-data/backup.sh
