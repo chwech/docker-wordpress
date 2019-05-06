@@ -16,6 +16,8 @@ services:
   mysql:
     image: mysql:5.7
     restart: always
+    ports:
+      - "3307:3306"
     volumes:
       - "/home/chwech/docker/wordpress/mysql-data:/var/lib/mysql"
     environment:
