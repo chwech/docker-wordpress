@@ -1,7 +1,6 @@
 version: '3.1'
 
 services:
-
   wordpress:
     image: wordpress
     restart: always
@@ -10,21 +9,18 @@ services:
       - "/home/chwech/docker/wordpress/plugins:/var/www/html/wp-content/plugins/"
     environment:
       WORDPRESS_DB_PASSWORD: admin-chwech
-    networks:
-      - default
-      - nginx_with_others
+
   mysql:
     image: mysql:5.7
     restart: always
-    ports:
-      - "3307:3306"
     volumes:
       - "/home/chwech/docker/wordpress/mysql-data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: admin-chwech
-    networks:
-      - default
 
-networks:
-  nginx_with_others:
-    external: true
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
