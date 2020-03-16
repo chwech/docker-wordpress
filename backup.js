@@ -81,7 +81,7 @@ async function run () {
     log('备份程序结束时间: ' + getDateTime())
     log('---------------------------------------------------------------------------------')
     // 压缩日志和sql文件
-    await execCommand(`zip -m ${backupPath} wordpress.sql log.txt`, { out: false })
+    await execCommand(`zip ${backupPath} wordpress.sql log.txt`, { out: false })
     // 发送邮件
     await sendEmail({ 
       text: '备份成功',
@@ -90,12 +90,12 @@ async function run () {
           filename: 'backup.zip',
           content: fs.createReadStream(backupPath)
         }
-      ]})
+      ]
+    })
   } catch (error) {
     log('备份失败')
     await execCommand(`rm -f ${sqlFileName}`) // 删掉wordpress.sql
     log('备份程序结束时间: ' + getDateTime())
-    log('---------------------------------------------------------------------------------')
     await sendEmail({ 
       text: '备份失败',
       attachments: [
@@ -105,8 +105,9 @@ async function run () {
         }
       ]
     })
+    log('---------------------------------------------------------------------------------')
   } finally {
-    await execCommand(`rm -f ${logPath}`, { out: false })
+    await execCommand(`rm -f ${sqlFileName}`, { out: false })
     await execCommand(`rm -f ${backupPath}`, { out: false })
   }
 }
