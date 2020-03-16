@@ -81,7 +81,7 @@ async function run () {
     log('备份程序结束时间: ' + getDateTime())
     log('---------------------------------------------------------------------------------')
     // 压缩日志和sql文件
-    await execCommand(`zip -m ${backupPath} ${sqlFileName} ${logPath}`, { out: false })
+    await execCommand(`zip -m ${backupPath} wordpress.sql log.txt`, { out: false })
     // 发送邮件
     await sendEmail({ 
       text: '备份成功',
