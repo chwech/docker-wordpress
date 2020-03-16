@@ -1,0 +1,23 @@
+{
+  "name": "docker-wordpress",
+  "version": "1.0.0",
+  "description": "> 使用docker部署wordpress博客",
+  "main": "backup.js",
+  "dependencies": {
+    "nodemailer": "^6.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chwech/docker-wordpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chwech/docker-wordpress/issues"
+  },
+  "homepage": "https://github.com/chwech/docker-wordpress#readme"
+}

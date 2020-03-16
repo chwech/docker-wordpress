@@ -1,3 +1,6 @@
 backup.log
 /mysql-data/*
 !/mysql-data/backup.sh
+/node_modules/
+log.txt
+wordpress.sql
