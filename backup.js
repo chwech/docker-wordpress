@@ -74,7 +74,7 @@ async function run () {
   log('当前工作目录：' + workDir)
   try {
     // 导出mysql数据
-    await execCommand(`docker-compose exec mysql mysqldump -uroot -padmin-chwech wordpress > ${sqlFileName}`)
+    await execCommand(`docker-compose exec -T mysql mysqldump -uroot -padmin-chwech wordpress > ${sqlFileName}`)
     log('导出数据库成功')
     // 压缩日志和sql文件
     await execCommand(`zip -m ${backupPath} ${sqlFileName} ${logPath}`)
