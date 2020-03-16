@@ -9,10 +9,12 @@ const logPath = path.join(workDir, 'log.txt')
 const backupPath = path.join(workDir, 'backup.zip')
 const sqlFileName = path.join(workDir, 'wordpress.sql')
 
-function log(str) {
+function log(str, { out = true } = {}) {
   try {
     console.log(str)
-    fs.appendFileSync(logPath, str + '\r\n')
+    if (out) {
+      fs.appendFileSync(logPath, str + '\r\n')
+    }
   } catch (error) {
     console.log(error)
   }
@@ -76,10 +78,10 @@ async function run () {
     // 导出mysql数据
     await execCommand(`docker-compose exec -T mysql mysqldump -uroot -padmin-chwech wordpress > ${sqlFileName}`)
     log('导出数据库成功')
-    // 压缩日志和sql文件
-    await execCommand(`zip -m ${backupPath} ${sqlFileName} ${logPath}`)
     log('备份程序结束时间: ' + getDateTime())
     log('---------------------------------------------------------------------------------')
+    // 压缩日志和sql文件
+    await execCommand(`zip -m ${backupPath} ${sqlFileName} ${logPath}`, { out: false })
     // 发送邮件
     await sendEmail({ 
       text: '备份成功',
@@ -103,7 +105,9 @@ async function run () {
         }
       ]
     })
+  } finally {
     await execCommand(`rm -f ${logPath}`, { out: false })
+    await execCommand(`rm -f ${backupPath}`, { out: false })
   }
 }
 
