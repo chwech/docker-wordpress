@@ -4,3 +4,4 @@ backup.log
 /node_modules/
 log.txt
 wordpress.sql
+/nginx/cert/
