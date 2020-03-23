@@ -76,7 +76,7 @@ async function run () {
   log('当前工作目录：' + workDir)
   try {
     // 导出mysql数据
-    await execCommand(`docker-compose exec -T mysql mysqldump -uroot -padmin-chwech wordpress > ${sqlFileName}`)
+    await execCommand(`/usr/local/bin/docker-compose exec -T mysql mysqldump -uroot -padmin-chwech wordpress > ${sqlFileName}`)
     log('导出数据库成功')
     log('备份程序结束时间: ' + getDateTime())
     log('---------------------------------------------------------------------------------')
