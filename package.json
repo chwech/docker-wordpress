@@ -4,7 +4,7 @@
   "description": "> 使用docker部署wordpress博客",
   "main": "backup.js",
   "dependencies": {
-    "nodemailer": "^6.4.5"
+    "nodemailer": "^6.4.16"
   },
   "devDependencies": {},
   "scripts": {
