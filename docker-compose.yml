@@ -25,3 +25,10 @@ services:
     ports:
       - "8000:80"
       - "8001:443"
+    networks:
+      - default
+      - nginx_with_others
+
+networks:
+  nginx_with_others:
+    external: true
