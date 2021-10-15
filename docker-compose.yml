@@ -7,6 +7,7 @@ services:
     volumes:
       - "/home/chwech/docker/wordpress/themes:/var/www/html/wp-content/themes/"
       - "/home/chwech/docker/wordpress/plugins:/var/www/html/wp-content/plugins/"
+      - "/home/chwech/docker/wordpress/uploads:/var/www/html/wp-content/uploads/"
     environment:
       WORDPRESS_DB_PASSWORD: admin-chwech
 
