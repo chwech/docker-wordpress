@@ -10,6 +10,9 @@ services:
       - "/home/chwech/docker/wordpress/uploads:/var/www/html/wp-content/uploads/"
     environment:
       WORDPRESS_DB_PASSWORD: admin-chwech
+    networks:
+      - default
+      - nginx_with_others
 
   mysql:
     image: mysql:5.7
