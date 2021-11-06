@@ -21,17 +21,7 @@ services:
       - "/home/chwech/docker/wordpress/mysql-data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: admin-chwech
-
-  nginx:
-    build: ./nginx
-    restart: always
-    ports:
-      - "8000:80"
-      - "8001:443"
-    networks:
-      - default
-      - nginx_with_others
-
+      
 networks:
   nginx_with_others:
     external: true
